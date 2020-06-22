@@ -8,10 +8,14 @@ let progressInterval;
 
 let modelName = "Bass Diffusion Demo 8.5.0";
 
-function runAnimation() {
+function runAnimation(value1, value2) {
     cloudClient.getLatestModelVersion(modelName)
         .then(version => cloudClient.createInputsFromExperiment(version, "Experiment"))
-        .then(inputs => cloudClient.startAnimation(inputs, "animation-container"))
+        .then(inputs => {
+            // inputs.setInput("value1", value1);
+            // inputs.setInput("value2", value2);
+            cloudClient.startAnimation(inputs, "animation-container")
+        })
         .then(a => {
             animation = a;
             document.getElementById("animationControls").style.display = "";
@@ -31,13 +35,13 @@ function runAnimation() {
 }
 
 function runSimulation() {
-    cloudClient.getLatestModelVersion( modelName )
-        .then( version => {
-            let inputs = cloudClient.createDefaultInputs( version );
-            inputs.setInput( "Contact Rate", 40.0 );
-            inputs.setInput( "{stop_mode}", "STOP_MODE_AT_TIME" );
-            inputs.setInput( "{start_date}", new Date(100000000) ); // Case insensitive
-            inputs.setInput( "{max_memory_MB}", 1024.1111 ); // Will be rounded to integer value
+    cloudClient.getLatestModelVersion(modelName)
+        .then(version => {
+            let inputs = cloudClient.createDefaultInputs(version);
+            inputs.setInput("Contact Rate", 40.0);
+            inputs.setInput("{stop_mode}", "STOP_MODE_AT_TIME");
+            inputs.setInput("{start_date}", new Date(100000000)); // Case insensitive
+            inputs.setInput("{max_memory_MB}", 1024.1111); // Will be rounded to integer value
             console.log(inputs.getInput("Contact Rate"));
             console.log(inputs.getInput("{STOP_MODE}"));
             console.log(inputs.getInput("{start_date}"));
@@ -48,42 +52,42 @@ function runSimulation() {
                 "AdoptionPercent"
             ]);
         })
-        .then( outputs => {
+        .then(outputs => {
             console.log(outputs.names());
             console.log(outputs.value(outputs.findNameIncluding("Percent")));
             console.log(outputs.getRawOutputs());
-            document.getElementById( "text-output" ).innerText = "AdoptionPercent = " + outputs.value("adoptionPercent");
+            document.getElementById("text-output").innerText = "AdoptionPercent = " + outputs.value("adoptionPercent");
         })
-        .catch( error => console.error(error) );
+        .catch(error => console.error(error));
 }
 
 function runParameterVariation() {
-    cloudClient.getLatestModelVersion( modelName )
-        .then( version => {
-            let inputs = cloudClient.createDefaultInputs( version );
-            inputs.setRangeInput( "Contact Rate", 21, 41, 20 );
-            inputs.setRangeInput( "Adoption Fraction", 0.02, 0.04, 0.01 );
-            inputs.setRangeInput( "Ad Effectiveness", 0.015, 0.065, 0.01 );
+    cloudClient.getLatestModelVersion(modelName)
+        .then(version => {
+            let inputs = cloudClient.createDefaultInputs(version);
+            inputs.setRangeInput("Contact Rate", 21, 41, 20);
+            inputs.setRangeInput("Adoption Fraction", 0.02, 0.04, 0.01);
+            inputs.setRangeInput("Ad Effectiveness", 0.015, 0.065, 0.01);
             console.log(inputs.getInput("Contact Rate"));
             parameterVariation = cloudClient.createParameterVariation(inputs);
             startProgressPolling();
             return parameterVariation.run();
         })
-        .then( parameterVariation => parameterVariation.waitForCompletion() )
-        .then( parameterVariation => parameterVariation.getOutputs([
+        .then(parameterVariation => parameterVariation.waitForCompletion())
+        .then(parameterVariation => parameterVariation.getOutputs([
             "AdoptionPlot|Potential Adopters",
             "AdoptionPercent"
-        ]) )
-        .then( outputs => {
+        ]))
+        .then(outputs => {
             console.log(outputs.getInputNames());
             console.log(outputs.getOutputNames());
             console.log(outputs.getValuesOfInput("Ad Effectiveness"));
             console.log(outputs.getValuesOfOutput("AdoptionPercent"));
             console.log(outputs.getRawData());
-            document.getElementById( "text-output" ).innerText = "AdoptionPercent = " + outputs.getValuesOfOutput("AdoptionPercent");
-            console.log( "AdoptionPercent = ", outputs.getValuesOfOutput("AdoptionPercent") );
+            document.getElementById("text-output").innerText = "AdoptionPercent = " + outputs.getValuesOfOutput("AdoptionPercent");
+            console.log("AdoptionPercent = ", outputs.getValuesOfOutput("AdoptionPercent"));
         })
-        .catch( error => console.error(error) )
+        .catch(error => console.error(error))
         .finally(() => {
             endProgressPolling();
         });
@@ -101,30 +105,30 @@ function endProgressPolling() {
 }
 
 function runThreeParallelSimulations() {
-    let crValues = [ 20, 50, 100 ]; //three values for Contact Rate parameter
+    let crValues = [20, 50, 100]; //three values for Contact Rate parameter
 
-    cloudClient.getLatestModelVersion( modelName )
-        .then( version => {
+    cloudClient.getLatestModelVersion(modelName)
+        .then(version => {
             let tasks = []; //this will be array of Promises
-            for ( let cr of crValues ) {
+            for (let cr of crValues) {
                 //launch 3 runs in parallel
-                let inputs = cloudClient.createDefaultInputs( version );
-                inputs.setInput( "Contact Rate", cr );
-                let simulation = cloudClient.createSimulation( inputs );
-                tasks.push( simulation.getOutputsAndRunIfAbsent() ); //add run Promise to the array
+                let inputs = cloudClient.createDefaultInputs(version);
+                inputs.setInput("Contact Rate", cr);
+                let simulation = cloudClient.createSimulation(inputs);
+                tasks.push(simulation.getOutputsAndRunIfAbsent()); //add run Promise to the array
             }
-            return Promise.all( tasks ); //this waits for ALL promises to complete
+            return Promise.all(tasks); //this waits for ALL promises to complete
         })
-        .then( outputsArray => { //we now have array of three Output objects (order is kept)
+        .then(outputsArray => { //we now have array of three Output objects (order is kept)
             let text = "";
-            for( let i = 0; i < crValues.length; i++ ) {
+            for (let i = 0; i < crValues.length; i++) {
                 //find and print some particular output and the corresp input
-                text += "Contact Rate = " + crValues[i] + " --> " + "Adoption Percent = " + outputsArray[i].value("AdoptionPercent" ) + "\n";
+                text += "Contact Rate = " + crValues[i] + " --> " + "Adoption Percent = " + outputsArray[i].value("AdoptionPercent") + "\n";
             }
-            document.getElementById( "text-output" ).innerText = text;
-            console.log( text );
+            document.getElementById("text-output").innerText = text;
+            console.log(text);
         })
-        .catch( error => console.error(error) )
+        .catch(error => console.error(error))
 }
 
 function stopSimulation() {

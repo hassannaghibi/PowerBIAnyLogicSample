@@ -10,13 +10,16 @@ var value2 = "";
 
 function _Embed_BasicEmbed() {
     // Read embed application token from textbox
-    var txtAccessToken = $('#txtAccessToken').val();
+    // var txtAccessToken = $('#txtAccessToken').val();
+    var txtAccessToken = "H4sIAAAAAAAEAC2Wxa7FDHKE3-XfOpLZPo40CzMze2dmZo_y7rkTZd216Wr46t__WOk7zGnxz3__E-lURqBYj6Y_aoHSNmFhtvADSOoG_vrV60ODh-A1IEMtGrv7oJ6iUFaAApwRshA0k8qo2bv68-lf-G_6dZqRUbdQZ_6uNyhVEG9KV2VSl0rirQhk_BYB75FPxXREgu9F-eYuhNfqh6dDqe_9qQds0N69wybWAnG9_vofWZvY3tZT1H5LqqGv1U9s4rYZKM1jJcqYuOhIzO36LQXamJ9xlm-DNG0NTK-5AajM4Iu5aA3RbRQ69a6UMwSA5LRF-BJSYRPk0OxWeP7uWUH9otPYdsI2OZwaAE-d21hrYItHx3oJp8t3PmGLpobkgfLzKIJx4CvOJ-872I58UPrZLEHksBC1wYe79ycNS9lboN3ZQUmU1NoELgLzkigN9kIQ_-kPm0gu_LgCtmuvxhL0V-cj6D2Rquj0zUupMGv9lRVwdBRBTO9z_ZvjUXA0TjhEKcj35kYwB194hv4waG4uNaCyBES74bl_x0WLXiKQf6VuiCSuGs-Q7pG3BkW3JDrpSh13oaBsvIFC9q-H2xM_IRXxJqzGBLSpFxoOKmTArd82H5Asa3LcaJk-sbffOv1sWTIVt6OhJ2XSgHD48rkvxE2Gabzv8-DppFmyUZhIvQ_FgJqoAULgPGPDdsVmHW8BvWy36Pgc3swGTMGsyTWaGissPy3WV_91-LiMJTcw-i-0aQQs6DlTOXKRnbsyexQOYJLPjcpf_RXdKT50PZ-5OEfLGkN-B1NJmrL17FxgwP1DDIm1G9OKDduiADvYC_9JJmtoTqNpybDuINUnE-51kLVCWDAz-uf7Tse83n2jHZ5IsG5WN_1x8m7FeyDBT-Zx-6tSvJuuHnRzSLPOgGxBlR3s7g0icxzY7ySctBEGKsrJ4-IKCnNPTQh4SUN6BdEnEpXeWAKVOHFeb5qXiNV3UR3b6TXgOeGTfVM6x87pF8Wxquxq2JCxoTu3GqAUXirAHr99GKPrJTsEkthaI51BuzR2tWf4ZBC2NFv7TgVabb8oPKfyDY0GnNQUzGk37qS_0mCw-nMxHI0Rsr3QQKw9gd5P3ne_RG-Lu8O9XWDIKXdemb_dLxOJlvMJBbMJDHcLTq1c8CKiksBOdLfrW3vRgzl_fEiqRlbeT00ueu_k2bOe2T3Yv4ghC1c_c3hw46CYLzmcBlSE018nIUyt9a5FEmowLuxMKtL3LvZ2b_3NvYH5l476c5x6pFjDiH09f1-sCPFZFtNlmXO4fHV9SlqJvPGhYj55Yb44nBrNwrJpfxW2GLfSS61GmOp8m9mQJycfHebHkmVanuX85rM9C7lhGMVJvxbXEiBdBp0zJD4oXRWnn7Uwu5TSxHNE5jNTuW_3cQY_zS8YjJYpgjJhfI-WEmBNy_TrfZ1vmO_On-iadR59o3mavIhwmNr4ZaGm-tmlauuirrC34tpFzJNhxb7Degwip5K1u0QRRkdR_jlHY3lbS6ruJsOWWDTL-Q33gd2zaxUghh9oNKN8nVDMzjWiWzRqiFuy0Qk_HwNY2r06T0HuSk8uwxGXO5bm9VksUvsFDj0GCZNPNFHA3ayAt3T2VG-SGF9AbvwrasKrkkfVcIEISf4anpBJy1vp_S9Wcxmz0a5bNHhLSmuxEwMilDq9dbebb8d5xFv01FCxIK2fdhfPNhSlkkEqi8azEumSVYCRqx5KrxGPv1zh-WCv_Pk44cLapAIj8pvVfD4dPi795IoUfweE8UYv9YnrQkNkizxqmOCR255NJSqDrmqFKnYZAZUKHulirLEjsOJSdUdvSDLdmbSHPLMEKbRiy7lrr7XACqCGknP1SeyYNop-QlsqDAP8UEekEzIE3zcV2B6GYkM26-RTu-SCVLg-5u6y9jnI8PZ9YGtsIclOR-X6d1_A1HLhrRAksKA0yw1661vOOR41byLo7lnCeiBIT1ohd-0HbRUdkHUCZ98JIxd8ujlMJWVHjIY0msF2k6puqqVWG5HjUyNUy4PjQPSmdk-VYeEJnkcvwnIOzllvIluU-Sh2MH9i-DjXGYBVs6soabEX180wJzpXgxTNwdqKUh7TWExPCppe9x2rBzYvojDTHFc5iZ-OdevCfkb-imGMMa4CAwfkBBhKXk4JFHU-30lnOETsjHNjpGmaczhOUiUj1jAXSxbPYVkEhUegnJBG1QKktb2NgXVvKgMou14taAGB-aa_Yg7gaWHfzhCy9e-LZLR4fjAV3olFzfW__vXPf_3Dbu9yzGr5_sUUdaSvvjC842lfSpeBqSLDmFRbu6JkiRrQ-LMq-g592Pnd2Ntp8E0elobSUvk4Hf0H1dU_KwiRJ6PXW8zJs5Lp3YZ25Y04Wcnw7VoUvfTzGORRMCQ47Qa57e27sBHMlZZepa8tFCEUbGAhYnQcLvyzktWV2l5Vk87WCgnmvnPfZxu-wHSf1YMWTL_sy4o-BF4U39U9e49OFfRmtw9PKsAD6RSq3h8e-rX3IRpY_sEL-js9DnlA7me4j2h_JW-6kmmPLynKOp57-bebFljgUeFAc9YmOUXQ8ALCSbD8TLOYi8PwqIUv-vZeGqncRcuLNg7k8D4rMOOISi99_HD2BmXy_PL_bX6Xptzk4M_laWGuGUR_CUBZAIfzFd3DGP1_KvcvgaXHuZV_suonC6tEA9_WcL8kGw_jGeCBrQxBz-Ac2NfmcjjXmpW0BDidUVqSBmFCTL2z58uTL-awUj1cQV8hAR9RXFr6Y7BycgC_mffpVel4Kpqm75FaQxv0J3l6DmMXnVDKggNWbK-T6zLLD3VgdEhgj1IVBquRPhfux7hVYj9NJCi0vvlidAWlxtHaH-MmF2r4VdGXpG4LLCviceDjaPX5t_CrAx6R-VerZnuiym_V77adn7I7GHstiN2oCUHCNUPfVTxIVB5YJap9qhPOrokGH5e7Fn3_YjKWSkAVhAXFN-wPfhzn2Fulr9Nc-hEEFHjMzugNO_Qf63qvIqGefsVmxI750Y7xP8P4n_8FnKtcXJoLAAA=";
 
     // Read embed URL from textbox
-    var txtEmbedUrl = $('#txtReportEmbed').val();
+    // var txtEmbedUrl = $('#txtReportEmbed').val();
+    var txtEmbedUrl = "https://app.powerbi.com/reportEmbed?reportId=f6bfd646-b718-44dc-a378-b73e6b528204&groupId=be8908da-da25-452e-b220-163f52476cdd&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLU5PUlRILUNFTlRSQUwtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7Im1vZGVybkVtYmVkIjp0cnVlfX0%3d";
 
     // Read report Id from textbox
-    var txtEmbedReportId = $('#txtEmbedReportId').val();
+    // var txtEmbedReportId = $('#txtEmbedReportId').val();
+    var txtEmbedReportId = "f6bfd646-b718-44dc-a378-b73e6b528204";
 
     // Read embed type from radio
     var tokenType = $('input:radio[name=tokenType]:checked').val();
@@ -1896,8 +1899,7 @@ function _Events_DataSelected() {
         var data = event.detail;
         Log.log(data);
         console.log("data selected :", data);
-        value1 =
-            console.log("equals :", data['dataPoints']['0']['identity']['0']['equals']);
+        console.log("equals :", data['dataPoints']['0']['identity']['0']['equals']);
         console.log("target :", data['dataPoints']['0']['identity']['0']['column']);
 
         if (data['dataPoints']['0']['identity']['0']['column'] === "Manufacturer") {
@@ -2064,6 +2066,7 @@ function _Events_ButtonClicked() {
         Log.logText("Event - buttonClicked:");
         var data = event.detail;
         Log.log(data);
+        console.log("btn id",event.detail['id']);
         if (event.detail['id'] === '838536f14de981bbc453') {
             console.log("Run Anylogic Animation");
             runAnimation(value1, value2);
