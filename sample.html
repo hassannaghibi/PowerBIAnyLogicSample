@@ -1,0 +1,39 @@
+<div id="steps-nav-bar" style="display: none">
+    <div id="steps-ul-dev">
+        <ul id="steps-ul" class="steps-ul">
+            <li id="steps-samples" onclick="OpenSamplesStep();">
+                <div class="stepsButton">
+                    <a href="#" class="steps-li-active">Samples</a>
+                </div>
+            </li>
+            <li id="steps-code" onclick="OpenCodeStepFromNavPane();">
+                <div class="stepsButton">
+                    <a href="#">Code</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="welcome-text">
+    <h3>Loading ...</h3>
+</div>
+
+<div id="mainContent">
+</div>
+
+<script>
+    var showBanner = true;
+
+    function closeBanner() {
+        showBanner = false;
+        $("#playground-banner").hide();
+    }
+
+    function openBannerLink() {
+        if (!showBanner)
+            return;
+
+        window.open("https://www.usertesting.com/panels/7wZ4nzGa/join?RID=Playground", '_blank');
+    }
+</script>
